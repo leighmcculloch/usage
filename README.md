@@ -1,62 +1,30 @@
 # Usage
 
-A macOS menu bar app that tracks time spent on the computer along with location.
-
-Data is stored in simple monthly CSV files.
-
-## Features
-
-- Menu bar icon with current tracking status (suburb and state)
-- Automatic location detection via reverse geocoding
-- Tracks active/inactive state via screen wake/sleep, lock/unlock, and session changes
-- Merges consecutive hours at the same location into single records
-- Monthly CSV files stored in `~/Library/Application Support/Usage/`
-- Launch at login support
-- No Dock icon — runs as a menu bar-only app
-- Zero third-party dependencies
-
-## Requirements
-
-- macOS 13 (Ventura) or later
-- Swift 5.9+
-- Location permission
+A macOS menu bar app that tracks time spent on the computer along with location. It detects active/inactive state via screen wake/sleep, lock/unlock, and session changes, and records hourly usage with your physical location to simple monthly CSV files.
 
 ## Install
 
-```
-make install
-```
-
-This builds the app, copies it to `~/Applications/Usage.app`, and opens it.
-
-## Uninstall
+### Homebrew
 
 ```
-make uninstall
+brew tap leighmcculloch/usage
+brew install --HEAD usage
 ```
 
-## Build
+## Use
 
-```
-make build
-```
+Usage runs as a menu bar-only app (no Dock icon). It automatically tracks when the computer is active and records the current location via reverse geocoding.
 
-Build the `.app` bundle without installing:
-
-```
-make app
-```
-
-The bundle is placed at `build/Usage.app`.
-
-## Data Format
-
-CSV files are stored at `~/Library/Application Support/Usage/usage-YYYY-MM.csv`
-with the following columns:
+Data is stored as monthly CSV files in `~/Library/Application Support/Usage/`:
 
 ```
 begin,end,suburb,state,country
 2026-02-10T08:00:00Z,2026-02-10T12:00:00Z,Sydney,New South Wales,Australia
 ```
 
-Times are in UTC and aligned to hour boundaries.
+Times are in UTC and aligned to hour boundaries. Consecutive hours at the same location are merged into single records.
+
+## Options
+
+- **Launch at Login** — available in the menu bar dropdown.
+- **Open Data Folder** — opens the CSV data directory in Finder.
