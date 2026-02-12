@@ -8,7 +8,13 @@ A macOS menu bar app that tracks time spent on the computer along with location.
 
 ```
 brew tap leighmcculloch/usage
-brew install --HEAD usage
+brew install --HEAD leighmcculloch/usage/usage
+```
+
+To upgrade:
+
+```
+brew upgrade --fetch-head leighmcculloch/usage/usage
 ```
 
 ## Use
