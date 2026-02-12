@@ -19,15 +19,10 @@ class Usage < Formula
     cp "build/AppIcon.icns", app/"Contents/Resources/"
   end
 
-  def post_install
-    user_apps = Pathname(Dir.home)/"Applications"
-    user_apps.mkpath
-    system "ln", "-sf", prefix/"Usage.app", user_apps/"Usage.app"
-  end
-
   def caveats
     <<~EOS
-      Usage.app has been linked to ~/Applications.
+      To start Usage:
+        open "#{opt_prefix}/Usage.app"
     EOS
   end
 end
