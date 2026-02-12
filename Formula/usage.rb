@@ -22,7 +22,7 @@ class Usage < Formula
   def post_install
     user_apps = Pathname(Dir.home)/"Applications"
     user_apps.mkpath
-    ln_sf prefix/"Usage.app", user_apps/"Usage.app"
+    system "ln", "-sf", prefix/"Usage.app", user_apps/"Usage.app"
   end
 
   def caveats
