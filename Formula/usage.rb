@@ -9,11 +9,14 @@ class Usage < Formula
   def install
     system "swift", "build", "-c", "release", "--disable-sandbox"
 
+    system "swift", "scripts/generate-icon.swift"
+
     app = prefix/"Usage.app"
     (app/"Contents/MacOS").mkpath
     (app/"Contents/Resources").mkpath
     cp ".build/release/Usage", app/"Contents/MacOS/"
     cp "Info.plist", app/"Contents/"
+    cp "build/AppIcon.icns", app/"Contents/Resources/"
   end
 
   def caveats

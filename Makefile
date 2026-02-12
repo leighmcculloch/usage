@@ -9,10 +9,12 @@ build: clean
 	swift build -c release
 
 app: build
+	swift scripts/generate-icon.swift
 	mkdir -p $(APP_BUNDLE)/Contents/MacOS
 	mkdir -p $(APP_BUNDLE)/Contents/Resources
 	cp .build/release/$(APP_NAME) $(APP_BUNDLE)/Contents/MacOS/$(APP_NAME)
 	cp Info.plist $(APP_BUNDLE)/Contents/Info.plist
+	cp build/AppIcon.icns $(APP_BUNDLE)/Contents/Resources/
 
 install: app
 	mkdir -p $(INSTALL_DIR)
